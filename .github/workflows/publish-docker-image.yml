@@ -1,0 +1,48 @@
+name: 🐳 Publish Docker Image
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  build-test-and-push:
+    name: Build 🏗️, Test 🧪, and Push 📦 Docker Image 🐳
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository 📥
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub 🔑
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set up Docker Buildx 🐳
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker Image 🏗️
+        uses: docker/build-push-action@v6
+        with:
+          platforms: linux/amd64
+          load: true
+          tags: utsavladani/node:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run Tests 🧪
+        run: |
+          chmod +x run-tests.sh
+          ./run-tests.sh
+
+      - name: Push Docker Image 📦
+        uses: docker/build-push-action@v6
+        with:
+          platforms: linux/amd64
+          push: true
+          tags: utsavladani/node:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
