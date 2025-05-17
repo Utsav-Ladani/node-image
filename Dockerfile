@@ -1,6 +1,6 @@
 FROM alpine:3.21
 
-ENV NODE_VERSION 23.11.0
+ENV NODE_VERSION 24.0.2
 
 RUN addgroup -g 1000 node \
     && adduser -u 1000 -G node -s /bin/sh -D node \
@@ -10,7 +10,7 @@ RUN addgroup -g 1000 node \
         curl \
     && ARCH= OPENSSL_ARCH='linux*' && alpineArch="$(apk --print-arch)" \
       && case "${alpineArch##*-}" in \
-        x86_64) ARCH='x64' CHECKSUM="d267e68a33036c2f3803adaf79b7191bcf45219cc12246f61c48b891bb70e943" OPENSSL_ARCH=linux-x86_64;; \
+        x86_64) ARCH='x64' CHECKSUM="031c293798e4f6a72b5c04db4c0f6c9b0cb88a75e143ff6ac69703a7a02ea22c" OPENSSL_ARCH=linux-x86_64;; \
         x86) OPENSSL_ARCH=linux-elf;; \
         aarch64) OPENSSL_ARCH=linux-aarch64;; \
         arm*) OPENSSL_ARCH=linux-armv4;; \
@@ -79,7 +79,8 @@ RUN addgroup -g 1000 node \
   && rm -rf /usr/local/bin/npx \
   && rm -rf /usr/local/lib/node_modules \
   # smoke tests
-  && node --version
+  && node --version \
+  && rm -rf /tmp/*
 
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
