@@ -1,6 +1,6 @@
 # Node.js Docker Image
 
-A Node.js Docker image based on `node:alpine` with package managers (npm, yarn, and corepack) removed, reducing image size by `11.5%`.
+A Node.js Docker image based on `node:alpine` with package managers (npm, yarn, and corepack) removed, reducing image size by `7.2%`.
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/utsavladani/node)](https://hub.docker.com/r/utsavladani/node)
 [![Docker Image Size](https://img.shields.io/docker/image-size/utsavladani/node/latest)](https://hub.docker.com/r/utsavladani/node)
@@ -8,9 +8,9 @@ A Node.js Docker image based on `node:alpine` with package managers (npm, yarn, 
 
 ## Image Details
 
-- **Node.js Version**: 23.9.0
-- **Base Image**: alpine:3.21
-- **Size**: 140.59MB
+- **Node.js Version**: 25.1.0
+- **Base Image**: alpine:3.22
+- **Size**: 50.6MB
 - **Docker Hub**: [utsavladani/node](https://hub.docker.com/r/utsavladani/node)
 - **Tags**: `latest`
 - **GitHub**: [Utsav-Ladani/node-image](https://github.com/Utsav-Ladani/node-image)
@@ -46,7 +46,7 @@ CMD ["node", "index.js"]
 For applications requiring npm packages and build process:
 
 ```dockerfile
-FROM node:23.9.0-alpine3.21 AS base
+FROM node:25.1.0-alpine3.22 AS base
 
 # ---------------------------------
 # Stage: Build
