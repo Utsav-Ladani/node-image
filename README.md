@@ -1,6 +1,6 @@
 # Node.js Docker Image
 
-A Node.js Docker image based on `node:alpine` with package managers (npm, yarn, and corepack) removed, reducing image size by `7.2%`.
+A Node.js Docker image based on `node:alpine` with package managers (npm, yarn, and corepack) removed, reducing image size by `6.25%`.
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/utsavladani/node)](https://hub.docker.com/r/utsavladani/node)
 [![Docker Image Size](https://img.shields.io/docker/image-size/utsavladani/node/latest)](https://hub.docker.com/r/utsavladani/node)
@@ -8,9 +8,9 @@ A Node.js Docker image based on `node:alpine` with package managers (npm, yarn, 
 
 ## Image Details
 
-- **Node.js Version**: 25.1.0
-- **Base Image**: alpine:3.22
-- **Size**: 50.6MB
+- **Node.js Version**: `25.6.0`
+- **Base Image**: `alpine:3.23`
+- **Size**: `53.1MB`
 - **Docker Hub**: [utsavladani/node](https://hub.docker.com/r/utsavladani/node)
 - **Tags**: `latest`
 - **GitHub**: [Utsav-Ladani/node-image](https://github.com/Utsav-Ladani/node-image)
@@ -20,7 +20,7 @@ A Node.js Docker image based on `node:alpine` with package managers (npm, yarn, 
 While there are many Node.js Docker images available, this image is specifically designed for production deployments where:
 
 - **Smaller size** is crucial for faster deployments and reduced attack surface
-- **Package managers** are not needed in production
+- **Package managers** are not needed in production and no need to worry about npm vulnerabilities.
 
 ## How to Use This Image
 
